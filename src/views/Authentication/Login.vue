@@ -6,18 +6,23 @@
       <input id="firstname" type="text" v-model="firstname">
       <label for="lastname">Last name:</label>
       <input id="lastname" type="text" v-model="lastname">
-      <button type="button" class="update" @click="update">Update</button>
+      <Button type="test" text="Update" class="update" @click.native="update" />
     </form>
     <p v-if="fullName">Full name is {{ fullName }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import { getModule } from 'vuex-module-decorators';
 import UserStore from '@/store/user';
+import UIButton from '@/components/UIComponents/Button.vue';
 
-@Component
+@Component({
+  components: {
+    Button: UIButton,
+  },
+})
 export default class Login extends Vue {
   // Data()
   public userStore?: UserStore;
@@ -72,25 +77,6 @@ export default class Login extends Vue {
       margin: 0;
       padding: 5px 10px;
       font-size: 1.1rem;
-    }
-    > button.update {
-      all: inherit;
-      padding: 5px 10px;
-      border: solid 1px $gray;
-      border-radius: 5px;
-      display: block;
-      margin: 20px 0;
-      width: auto;
-      font-size: 1.1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all .2s;
-
-      &:hover {
-        background-color: $secondaryGreen;
-        color: $white;
-        border-color: transparent;
-      }
     }
   }
 }

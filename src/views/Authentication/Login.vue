@@ -6,7 +6,7 @@
       <input id="firstname" type="text" v-model="firstname">
       <label for="lastname">Last name:</label>
       <input id="lastname" type="text" v-model="lastname">
-      <Button type="test" text="Update" class="update" @click.native="update" />
+      <UIButton type="test" text="Update" class="update" @click.native="update" />
     </form>
     <p v-if="fullName">Full name is {{ fullName }}</p>
   </div>
@@ -14,31 +14,24 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { getModule } from 'vuex-module-decorators';
-import UserStore from '@/store/user';
 import UIButton from '@/components/UIComponents/Button.vue';
+import { user } from '@/store/user';
 
 @Component({
   components: {
-    Button: UIButton,
+    UIButton,
   },
 })
 export default class Login extends Vue {
   // Data()
-  public userStore?: UserStore;
   public message: string = 'Here we are on the login page';
   public firstname: string = '';
   public lastname: string = '';
 
-  // Lifecycle Hook
-  public created() {
-    this.userStore = getModule(UserStore, this.$store);
-  }
-
   // Method
   public update(): void {
     const { firstname, lastname } = this;
-    this.userStore!.updateName({ firstname, lastname });
+    user.updateUser({ firstname, lastname });
   }
 
   // Computed
@@ -47,7 +40,7 @@ export default class Login extends Vue {
   }
 
   get fullName(): string | null {
-    return this.userStore!.fullName;
+    return user.fullName;
   }
 }
 </script>

@@ -1,31 +1,54 @@
-import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
+import { getStoreBuilder, BareActionContext } from 'vuex-typex';
+import { RootState } from '@/store';
 
-export interface Person {
-  firstname: string;
-  lastname: string;
+export interface UserState {
+  firstname?: string;
+  lastname?: string;
 }
 
-@Module({ name: 'user' })
-export default class UserStore extends VuexModule {
-  public firstname: string = '';
-  public lastname: string = '';
+const initialState: UserState = {
+  firstname: undefined,
+  lastname: undefined,
+};
+
+const builder = getStoreBuilder<RootState>().module('cart', initialState);
+
+const userGetter = builder.read(function getUser(state: UserState): UserState {
+  return state;
+});
+
+const personValidGetter = builder.read(function personValid(state: UserState): boolean {
+  const { firstname, lastname } = state;
+  return firstname !== undefined
+    && !!firstname.length
+    && lastname !== undefined
+    && !!lastname.length;
+});
+
+function updateUser(context: BareActionContext<UserState, RootState>, person: UserState) {
+  user.setUser(person);
+}
+
+function setUser(state: UserState, person: UserState) {
+  state.firstname = person.firstname;
+  state.lastname = person.lastname;
+}
+
+export const user = {
+  get getUser() {
+    return userGetter();
+  },
+
+  get personValid() {
+    return personValidGetter();
+  },
 
   get fullName(): string | null {
-    return this.personValid ? `${this.firstname} ${this.lastname}` : null;
-  }
+    const { firstname, lastname } = userGetter();
+    return personValidGetter() ? `${firstname} ${lastname}` : null;
+  },
 
-  get personValid(): boolean {
-    return !!this.firstname.length && !!this.lastname.length;
-  }
+  setUser: builder.commit(setUser),
 
-  @Mutation
-  public editName({ firstname, lastname }: Person) {
-    this.firstname = firstname;
-    this.lastname = lastname;
-  }
-
-  @Action({ commit: 'editName' })
-  public async updateName(name: Person) {
-    return name;
-  }
-}
+  updateUser: builder.dispatch(updateUser),
+};

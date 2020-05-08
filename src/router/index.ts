@@ -1,14 +1,16 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
+import organize from './organize';
 
 Vue.use(VueRouter);
 
 const routes: RouteConfig[] = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
   },
+  ...organize,
 ];
 
 const router = new VueRouter({

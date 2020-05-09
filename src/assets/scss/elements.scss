@@ -17,3 +17,10 @@
     }
   }
 }
+
+input {
+  &[type=text] {
+    @apply border border-gray-500 rounded;
+    @apply h-12 px-4;
+  }
+}

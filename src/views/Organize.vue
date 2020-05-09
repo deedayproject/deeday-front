@@ -12,7 +12,9 @@
         <strong>Pour des évènements d'entreprises</strong> durables et responsables
       </h2>
     </div>
-    <router-view class="w-8/12 p-16" />
+    <router-view
+      @next="goToStep(step + 1)"
+      class="w-8/12 p-16 overflow-y-scroll" />
   </div>
 </template>
 
@@ -24,12 +26,20 @@ export default defineComponent({
   setup(props, { root }) {
     const steps = [
       'organize-event-type',
+      'organize-event-describe',
     ];
     const step = ref(0);
-    root.$router.push({ name: steps[step.value] }).catch(() => {});
+
+    function goToStep(toStep: number) {
+      step.value = toStep;
+      root.$router.push({ name: steps[step.value] }).catch(() => {});
+    }
+
+    goToStep(0);
 
     return {
       step,
+      goToStep,
     };
   },
 });

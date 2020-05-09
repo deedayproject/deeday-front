@@ -23,7 +23,7 @@
       </button>
     </div>
     <div class="actions mx-12 flex justify-end">
-      <button class="btn yellow">
+      <button class="btn yellow" @click="$emit('next')">
         <span>Suivant</span>
         <img class="h-6" src="@/assets/img/btn-arrow.png">
       </button>

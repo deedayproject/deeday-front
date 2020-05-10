@@ -1,5 +1,5 @@
 <template>
-  <div class="event-type">
+  <div class="event-describe">
     <div class="head flex items-center">
       <div class="relative">
         <img src="@/assets/svg/background-step.png" alt="background step">
@@ -53,6 +53,7 @@
             :dot-options="dotOptions"
             :process-style="processStyle"
             :height="8"
+            :interval="5"
             :min="0"
             :max="3000"
             :tooltip-placement="['top', 'bottom']"
@@ -65,11 +66,11 @@
       </form>
     </div>
     <div class="actions mx-12 flex justify-end">
-      <button class="btn yellow">
+      <button class="btn yellow" @click="$emit('previous')">
         <img class="h-6 transform rotate-180" src="@/assets/img/btn-arrow.png">
         <span>Précédent</span>
       </button>
-      <button class="btn yellow ml-8">
+      <button class="btn yellow ml-8" @click="$emit('next')">
         <span>Suivant</span>
         <img class="h-6" src="@/assets/img/btn-arrow.png">
       </button>
@@ -85,7 +86,7 @@ import TailwindConfig from '@/../tailwind.config';
 import Toggle from '@/components/Toggle.vue';
 
 export default defineComponent({
-  name: 'EventType',
+  name: 'EventDescribe',
   components: { Toggle, VueSlider },
   data() {
     return {

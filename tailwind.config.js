@@ -19,10 +19,26 @@ module.exports = {
         },
         yellow: {
           100: '#FFD972',
+          200: '#FFF7C4',
+          300: '#FFD800',
           default: '#FFBA00',
         },
         green: {
+          200: '#DEF4EC',
+          300: '#20AF81',
           default: '#0DD496',
+        },
+        blue: {
+          200: '#EDF6FF',
+          300: '#00C3D8',
+        },
+        orange: {
+          200: '#FFEFE4',
+          300: '#FF4109',
+        },
+        red: {
+          200: '#FFE1E1',
+          300: '#F90136',
         },
       },
     },

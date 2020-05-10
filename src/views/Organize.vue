@@ -12,9 +12,14 @@
         <strong>Pour des évènements d'entreprises</strong> durables et responsables
       </h2>
     </div>
-    <router-view
-      @next="goToStep(step + 1)"
-      class="w-8/12 p-16 overflow-y-scroll" />
+    <transition name="fade" mode="out-in">
+      <div class="scroll-container w-8/12 overflow-y-scroll">
+        <router-view
+          @previous="goToStep(step - 1)"
+          @next="goToStep(step + 1)"
+          class="p-16" />
+        </div>
+    </transition>
   </div>
 </template>
 
@@ -27,6 +32,7 @@ export default defineComponent({
     const steps = [
       'organize-event-type',
       'organize-event-describe',
+      'organize-event-config',
     ];
     const step = ref(0);
 

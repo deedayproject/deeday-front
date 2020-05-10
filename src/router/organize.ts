@@ -16,6 +16,11 @@ const routes: RouteConfig[] = [
         path: 'event-describe',
         component: () => import(/* webpackChunkName: "organize-event-describe" */ '@/components/Organize/2-EventDescribe.vue'),
       },
+      {
+        name: 'organize-event-config',
+        path: 'event-config',
+        component: () => import(/* webpackChunkName: "organize-event-config" */ '@/components/Organize/3-EventConfig.vue'),
+      },
     ],
   },
 ];

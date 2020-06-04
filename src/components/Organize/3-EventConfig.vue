@@ -133,7 +133,7 @@
       </div>
     </div>
     <div class="actions mx-12 flex justify-end">
-      <button class="btn yellow ml-8">
+      <button class="btn yellow ml-8" @click="$emit('next')">
         <span>Rechercher</span>
         <img class="h-6" src="@/assets/img/btn-arrow.png">
       </button>

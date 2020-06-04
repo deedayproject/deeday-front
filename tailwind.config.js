@@ -1,8 +1,20 @@
 module.exports = {
-  purge: [],
+  purge: {
+    content: ['./public/**/*.html', './src/**/*.vue'],
+    options: {
+      whitelistPatterns: [
+        /-(leave|enter|appear)(|-(to|from|active))$/,
+        /^(?!(|.*?:)cursor-move).+-move$/,
+        /^router-link(|-exact)-active$/,
+      ],
+    },
+  },
   theme: {
     extend: {
       colors: {
+        black: {
+          default: '#333',
+        },
         white: {
           100: '#EBF4EC',
           default: '#fff',
@@ -16,6 +28,7 @@ module.exports = {
         },
         'duck-green': {
           default: '#099F82',
+          900: '#035746',
         },
         yellow: {
           100: '#FFD972',

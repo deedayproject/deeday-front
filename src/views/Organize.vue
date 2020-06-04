@@ -33,6 +33,7 @@ export default defineComponent({
       'organize-event-type',
       'organize-event-describe',
       'organize-event-config',
+      'events-results',
     ];
     const step = ref(0);
 

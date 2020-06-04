@@ -10,6 +10,11 @@ const routes: RouteConfig[] = [
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
   },
+  {
+    path: '/events/results',
+    name: 'events-results',
+    component: () => import(/* webpackChunkName: "events-results" */ '@/views/EventsResults.vue'),
+  },
   ...organize,
 ];
 

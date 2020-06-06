@@ -45,7 +45,10 @@ export default defineComponent<Props>({
     function goToImage(position: number) {
       const img = originalOrder[position];
       while (imagesWithId.value[0].id !== img.id) {
-        imagesWithId.value.unshift(imagesWithId.value.pop()!);
+        const last = imagesWithId.value.pop();
+        if (last) {
+          imagesWithId.value.unshift();
+        }
       }
       index.value = position;
     }

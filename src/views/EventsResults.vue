@@ -58,6 +58,28 @@
           <ItemPreview />
         </div>
       </section>
+      <section id="places">
+        <div class="flex justify-between">
+          <h2 class="mb-6">Traiteurs</h2>
+          <button>Tout afficher</button>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <ItemPreview />
+          <ItemPreview />
+          <ItemPreview />
+        </div>
+      </section>
+      <section id="places">
+        <div class="flex justify-between">
+          <h2 class="mb-6">Staff</h2>
+          <button>Tout afficher</button>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <ItemPreview />
+          <ItemPreview />
+          <ItemPreview />
+        </div>
+      </section>
     </main>
   </div>
 </template>

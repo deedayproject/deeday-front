@@ -15,6 +15,11 @@ const routes: RouteConfig[] = [
     name: 'events-results',
     component: () => import(/* webpackChunkName: "events-results" */ '@/views/EventsResults.vue'),
   },
+  {
+    path: '/events/:id',
+    name: 'article-detail',
+    component: () => import(/* webpackChunkName: "article-detail" */ '@/views/ArticleDetail.vue'),
+  },
   ...organize,
 ];
 

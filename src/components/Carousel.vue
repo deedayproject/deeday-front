@@ -35,7 +35,7 @@ export default defineComponent<Props>({
     },
   },
   setup(props) {
-    const index = ref<number>(0);
+    const index = ref<number>(Math.floor(Math.random() * (props.images.length - 1) + 1));
     const originalOrder = props.images.map((img) => ({
       id: randomId(),
       src: img,
@@ -47,11 +47,13 @@ export default defineComponent<Props>({
       while (imagesWithId.value[0].id !== img.id) {
         const last = imagesWithId.value.pop();
         if (last) {
-          imagesWithId.value.unshift();
+          imagesWithId.value.unshift(last);
         }
       }
       index.value = position;
     }
+
+    goToImage(index.value);
 
     return {
       index,
@@ -63,10 +65,6 @@ export default defineComponent<Props>({
 </script>
 
 <style lang="scss" scoped>
-.slide-list-move {
-  transition: transform 1s;
-}
-
 .carousel {
   .slider {
     @apply flex overflow-hidden w-full;

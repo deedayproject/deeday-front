@@ -211,7 +211,7 @@
             <a href="#" class="text-green font-bold">Voir les 44 autres commentaires</a>
           </section>
         </div>
-        <div class="summary flex flex-col p-6">
+        <div class="summary flex flex-col flex-shrink-0 p-6">
           <h5 class="text-gray-200 font-light mb-2">
             <span class="text-green font-semibold text-xl">200€</span> /jour
           </h5>
